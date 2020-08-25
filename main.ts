@@ -33,6 +33,19 @@ input.onGesture(Gesture.TiltRight, function () {
         # # # # #
         `)
 })
+radio.onReceivedNumber(function (receivedNumber) {
+    basic.showString("OFF")
+    basic.showLeds(`
+        . . . . .
+        . . . . .
+        . . . . .
+        . . . . .
+        . . . . .
+        `)
+})
+input.onGesture(Gesture.FreeFall, function () {
+    radio.sendNumber(1)
+})
 input.onButtonPressed(Button.A, function () {
     basic.showLeds(`
         . # . . .
