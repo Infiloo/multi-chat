@@ -23,28 +23,18 @@ input.onPinPressed(TouchPin.P0, function () {
         `)
 })
 input.onGesture(Gesture.TiltRight, function () {
-    basic.showString("HALLO LEO")
-    radio.sendString("LEO IST ONLINE")
-    basic.showLeds(`
-        . . . . .
-        # # # # #
-        # # # # #
-        # . # . #
-        # # # # #
-        `)
-})
-radio.onReceivedNumber(function (receivedNumber) {
-    basic.showString("OFF")
-    basic.showLeds(`
-        . . . . .
-        . . . . .
-        . . . . .
-        . . . . .
-        . . . . .
-        `)
-})
-input.onGesture(Gesture.FreeFall, function () {
-    radio.sendNumber(1)
+    if (ONLINE == 0) {
+        ONLINE = 1
+        basic.showString("HALLO LEO")
+        radio.sendString("LEO IST ONLINE")
+        basic.showLeds(`
+            . . . . .
+            # # # # #
+            # # # # #
+            # . # . #
+            # # # # #
+            `)
+    }
 })
 input.onButtonPressed(Button.A, function () {
     basic.showLeds(`
@@ -71,15 +61,18 @@ input.onButtonPressed(Button.A, function () {
         `)
 })
 input.onGesture(Gesture.TiltLeft, function () {
-    basic.showString("HALLO UWE")
-    radio.sendString("UWE IST ONLINE ")
-    basic.showLeds(`
-        . . . . .
-        # # # # #
-        # # # # #
-        # . # . #
-        # # # # #
-        `)
+    if (ONLINE == 0) {
+        ONLINE = 1
+        basic.showString("HALLO UWE")
+        radio.sendString("UWE IST ONLINE ")
+        basic.showLeds(`
+            . . . . .
+            # # # # #
+            # # # # #
+            # . # . #
+            # # # # #
+            `)
+    }
 })
 input.onPinPressed(TouchPin.P2, function () {
     basic.showLeds(`
@@ -106,15 +99,18 @@ input.onPinPressed(TouchPin.P2, function () {
         `)
 })
 input.onGesture(Gesture.Shake, function () {
-    basic.showString("HALLO MIRIAM")
-    radio.sendString("MIRIAM IST ONLINE")
-    basic.showLeds(`
-        . . . . .
-        # # # # #
-        # # # # #
-        # . # . #
-        # # # # #
-        `)
+    if (ONLINE == 0) {
+        ONLINE = 1
+        basic.showString("HALLO MIRIAM")
+        radio.sendString("MIRIAM IST ONLINE")
+        basic.showLeds(`
+            . . . . .
+            # # # # #
+            # # # # #
+            # . # . #
+            # # # # #
+            `)
+    }
 })
 radio.onReceivedString(function (receivedString) {
     basic.showLeds(`
@@ -195,7 +191,9 @@ input.onPinPressed(TouchPin.P1, function () {
         # # # # #
         `)
 })
+let ONLINE = 0
 radio.setGroup(123)
+ONLINE = 0
 basic.showLeds(`
     . . . . .
     . . # . .
